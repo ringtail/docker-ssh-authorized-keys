@@ -56,7 +56,7 @@ if [ "$(basename $1)" == "$DAEMON" ]; then
     trap stop SIGINT SIGTERM
     $@ &
     pid="$!"
-    mkdir -p /var/run/$DAEMON && echo "${pid}" > /var/run/$DAEMON/$DAEMON.pid
+    mkdir -p /var/run/$DAEMON && chmod 0755 /var/run/$DAEMON && echo "${pid}" > /var/run/$DAEMON/$DAEMON.pid
     wait "${pid}" && exit $?
 else
     exec "$@"

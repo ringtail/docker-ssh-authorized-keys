@@ -30,6 +30,10 @@ if [ "${AUTHORIZED_KEYS}" != "**None**" ]; then
   echo ${AUTHORIZED_KEYS} >>  ~/.ssh/authorized_keys
 fi
 
+if ["${PRIVATE_KEY}" != "**None**" ]; then
+  echo ${PRIVATE_KEY} >> ~/.ssh/id_rsa
+fi
+
 if [ "${DISABLE_HOST_CHECK}" != "**None**" ]; then
   echo "StrictHostKeyChecking no" >> ~/.ssh/config
 fi

@@ -26,6 +26,10 @@ if [ -w ~/.ssh/authorized_keys ]; then
     chmod 600 ~/.ssh/authorized_keys
 fi
 
+if ["${PRIVATE_KEY}" != "**None**" ]; then
+  echo ${PRIVATE_KEY} >> ~/.ssh/id_rsa
+fi
+
 if [ "${AUTHORIZED_KEYS}" != "**None**" ]; then
   echo ${AUTHORIZED_KEYS} >>  ~/.ssh/authorized_keys
 fi

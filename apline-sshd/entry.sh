@@ -30,6 +30,10 @@ if [ "${AUTHORIZED_KEYS}" != "**None**" ]; then
   echo ${AUTHORIZED_KEYS} >>  ~/.ssh/authorized_keys
 fi
 
+if [ "${DISABLE_HOST_CHECK}" != "**None**" ]; then
+  echo "StrictHostKeyChecking no" >> ~/.ssh/config
+fi
+
 # Warn if no config
 if [ ! -e ~/.ssh/authorized_keys ]; then
   echo "WARNING: No SSH authorized_keys found for root"

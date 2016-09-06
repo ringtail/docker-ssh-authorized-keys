@@ -12,6 +12,7 @@ RUN apk update && \
 EXPOSE 22
 
 ENV AUTHORIZED_KEYS **None**
+ENV DISABLE_HOST_CHECK **None**
 
 COPY entry.sh /entry.sh
 

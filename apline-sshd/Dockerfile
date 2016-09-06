@@ -2,29 +2,19 @@ FROM alpine:3.4
 
 MAINTAINER ringtail <zhongwei.lzw@alibaba-inc.com>
 
-RUN \
-    apk --no-cache add openssh && \
-    echo "root:root" | chpasswd
+RUN apk update && \
+    apk --no-cache add bash openssh && \
+    mkdir -p ~root/.ssh && chmod 700 ~root/.ssh/ && \
+    echo -e "Port 22\n" >> /etc/ssh/sshd_config && \
+    cp -a /etc/ssh /etc/ssh.cache && \
+    rm -rf /var/cache/apk/*
 
+EXPOSE 22
 
-# Default config overrides
-ENV SSHD_OPTION_PERMIT_ROOT_LOGIN yes
-ENV SSHD_OPTION_USE_DNS no
+ENV AUTHORIZED_KEYS **None**
 
-ENV SSHD_COMMAND_AFTER ""
+COPY entry.sh /entry.sh
 
-WORKDIR "/dcr/cm.d"
+ENTRYPOINT ["/entry.sh"]
 
-
-# -D    not detach and does not become a daemon
-# -e    send the output to the standard error instead of the system log
-# -o    give options in the format used in the configuration file
-
-RUN \
-    echo "ssh-keygen -A;" > 100-sshd-050-init && \
-    echo "/usr/sbin/sshd \
-      -D \
-      -e \
-      -o PermitRootLogin=\$SSHD_OPTION_PERMIT_ROOT_LOGIN \
-      -o UseDNS=\$SSHD_OPTION_USE_DNS \
-      $SSHD_COMMAND_AFTER ;" > 100-sshd-100-default
+CMD ["/usr/sbin/sshd", "-D", "-f", "/etc/ssh/sshd_config"]

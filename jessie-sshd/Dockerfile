@@ -5,7 +5,6 @@ MAINTAINER ringtail <zhongwei.lzw@alibaba-inc.com>
 RUN apt-get update -y && \
     apt-get install -y openssh-server && \
     mkdir -p /root/.ssh && chmod 700 /root/.ssh/ && \
-    echo -e "Port 22\n" >> /etc/ssh/sshd_config && \
     cp -a /etc/ssh /etc/ssh.cache && \
     rm -rf /var/lib/apt/lists/*
 

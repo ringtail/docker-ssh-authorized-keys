@@ -4,7 +4,7 @@ MAINTAINER ringtail <zhongwei.lzw@alibaba-inc.com>
 
 RUN \
     apk --no-cache add openssh && \
-    OL-save /etc/ssh && \
+    VOL-save /etc/ssh && \
     echo "root:root" | chpasswd
 
 

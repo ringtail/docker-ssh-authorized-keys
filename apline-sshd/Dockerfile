@@ -14,9 +14,9 @@ EXPOSE 22
 ENV AUTHORIZED_KEYS **None**
 ENV DISABLE_HOST_CHECK **None**
 
-RUN chmod +x /entry.sh
-
 COPY entry.sh /entry.sh
+
+RUN chmod +x /entry.sh
 
 ENTRYPOINT ["/entry.sh"]
 

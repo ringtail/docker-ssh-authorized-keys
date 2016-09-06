@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM buildpack-deps:jessie
 
 MAINTAINER ringtail <zhongwei.lzw@alibaba-inc.com>
 

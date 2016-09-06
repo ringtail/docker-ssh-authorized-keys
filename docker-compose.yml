@@ -1,0 +1,13 @@
+master:
+  image: "registry.cn-hangzhou.aliyuncs.com/ringtail/jessie-sshd:v1.0"
+  environment:
+    - AUTHORIZED_KEYS: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD2kFWnwcKty6d1mJ/QgVjh9m99JzYpiwiPgq121fn5YPRhSh0f0+3S61cWMjYRQJDGBit4/5zsZPJzysYP/EngniyYsWPZi5SxRz58BGG6PL8f5seZaiTep8JxybOTS45FQ08QG4E5IbCZDJnTLlOaJlfndLgCGiIawPYXzmywh9xypzT9CzYLn4WDL57Kdr6GmLEYYQXS+UuNz6Gmxft85ZedO985fzx81lLymF72zIem3rd+T/R6JTBsj47tCBFpWsTaItfm2vraoAp2hJqxD0TqUc96JiFA+lw25NH8USvMaZuAzXriX7GIwS/h/obPmA19zHb5wmsfHKKFxUDt zhongwei.lzw@alibaba-inc.com"
+    - DISABLE_HOST_CHECK: true
+  volumes:
+    - /mnt/acs_mnt/ossfs/cs-volume/id_rsa:/root/.ssh/id_rsa
+slave:
+  image: "registry.cn-hangzhou.aliyuncs.com/ringtail/jessie-sshd:v1.0"
+  environment:
+    - AUTHORIZED_KEYS:"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD2kFWnwcKty6d1mJ/QgVjh9m99JzYpiwiPgq121fn5YPRhSh0f0+3S61cWMjYRQJDGBit4/5zsZPJzysYP/EngniyYsWPZi5SxRz58BGG6PL8f5seZaiTep8JxybOTS45FQ08QG4E5IbCZDJnTLlOaJlfndLgCGiIawPYXzmywh9xypzT9CzYLn4WDL57Kdr6GmLEYYQXS+UuNz6Gmxft85ZedO985fzx81lLymF72zIem3rd+T/R6JTBsj47tCBFpWsTaItfm2vraoAp2hJqxD0TqUc96JiFA+lw25NH8USvMaZuAzXriX7GIwS/h/obPmA19zHb5wmsfHKKFxUDt zhongwei.lzw@alibaba-inc.com"
+  ports:
+    - 1223:22

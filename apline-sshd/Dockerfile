@@ -4,7 +4,6 @@ MAINTAINER ringtail <zhongwei.lzw@alibaba-inc.com>
 
 RUN \
     apk --no-cache add openssh && \
-    VOL-save /etc/ssh && \
     echo "root:root" | chpasswd
 
 
@@ -16,14 +15,12 @@ ENV SSHD_COMMAND_AFTER ""
 
 WORKDIR "/dcr/cm.d"
 
-VOLUME ["/etc/ssh"]
 
 # -D    not detach and does not become a daemon
 # -e    send the output to the standard error instead of the system log
 # -o    give options in the format used in the configuration file
 
 RUN \
-    echo "VOL-restore /etc/ssh;" > 010-volumes-100-etc-ssh && \
     echo "ssh-keygen -A;" > 100-sshd-050-init && \
     echo "/usr/sbin/sshd \
       -D \

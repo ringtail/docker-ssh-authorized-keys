@@ -32,7 +32,7 @@ fi
 
 if [ -w ~/.ssh/id_rsa ]; then
   chmod 600 ~/.ssh/id_rsa
-if
+fi
 
 if [ "${AUTHORIZED_KEYS}" != "**None**" ]; then
   echo ${AUTHORIZED_KEYS} >>  ~/.ssh/authorized_keys

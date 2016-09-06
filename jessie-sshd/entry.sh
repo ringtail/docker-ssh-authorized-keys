@@ -36,7 +36,7 @@ fi
 
 if [ -w ~/.ssh/id_rsa ]; then
   chmod 600 ~/.ssh/id_rsa
-if
+fi
 
 if [ "${DISABLE_HOST_CHECK}" != "**None**" ]; then
   echo "StrictHostKeyChecking no" >> ~/.ssh/config

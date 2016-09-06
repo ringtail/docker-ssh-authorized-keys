@@ -30,7 +30,7 @@ if [ "${AUTHORIZED_KEYS}" != "**None**" ]; then
   echo ${AUTHORIZED_KEYS} >>  ~/.ssh/authorized_keys
 fi
 
-if ["${PRIVATE_KEY}" != "**None**" ]; then
+if [ "${PRIVATE_KEY}" != "**None**" ]; then
   echo ${PRIVATE_KEY} >> ~/.ssh/id_rsa
 fi
 

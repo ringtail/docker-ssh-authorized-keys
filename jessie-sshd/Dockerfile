@@ -17,4 +17,4 @@ COPY entry.sh /entry.sh
 
 RUN chmod +x /entry.sh
 
-CMD ["/entry.sh;/usr/sbin/sshd", "-D", "-f", "/etc/ssh/sshd_config"]
+CMD ["sh","-c","/entry.sh ; /usr/sbin/sshd -D -f /etc/ssh/sshd_config"]
